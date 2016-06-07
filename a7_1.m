@@ -39,7 +39,7 @@ for iStep = 1:nStep %%主ループ%%
     if( method == 1 ) %%% FTCS法 %%%
         a(1:N) = a(1:N) + coeff*(a(ip)-a(im));
     elseif ( method == 2 ) %ラツクス法
-        a(1:N) = a(1:N) + coeff*(a(ip)-a(im));
+        a(1:N) = .5*(a(ip)+a(im)) + coeff*(a(ip)-a(im));
     else %%% ラックス・ベンドロフ%%
         a(1:N) = a(1:N) + coeff*(a(ip)-a(im)) + ...
             coefflw*(a(ip)+a(im)-2*a(1:N));
