@@ -29,7 +29,7 @@ im(2:N) = 1:(N-1); im(1) = N;%ｉm = i-1かつ有周期性
 %*プロット用配列を初期化する。
 iplot = 1 ; %プロット回数
 aplot(:,1) = a(:); %初期状態を記録
-tplot ( 1 ) = 0 ; %はじめの時刻
+tplot(1) = 0 ; %はじめの時刻
 nplots = 50 ; %所望のプロット数
 plotStep = nStep/nplots;%プロット間の時間刻み回数
 %*所望の時間刻み数まで計算を繰り返す。
@@ -47,8 +47,9 @@ for iStep = 1:nStep %%主ループ%%
     %*プロット用に一定間隔でa(t)を記録する。
     if( rem(iStep,plotStep) < 1 ) %時間刻みplot_iter回毎に記録
         iplot = iplot+1;
-        aplot ( : , iplot ) = a(:); %プロット用にa ( i ) を記録
-        fprintf ( ' 時間刻みそ%g回のうち%g回完了\n',nStep,iStep);
+        aplot(:,iplot) = a(:); %プロット用にa ( i ) を記録
+        tplot(iplot)=tau*iStep;
+        fprintf('時間刻みそ%g回のうち%g回完了\n',nStep,iStep);
     end
 end
 
