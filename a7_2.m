@@ -72,10 +72,11 @@ mesh(tplot,xplot,rplot)
 xlabel('t'); ylabel('x'); zlabel('\rho');
 title('位置および時刻と密度の関係');
 view([100 30]) ;%図を見やすい角度に回転させる
-pause(10); % 1秒静止
+pause(1); % 1秒静止
 %*位置および時刻と密度の関係を等値線グラフ表示する。
 figure (2); clf; % 2番目の画面を初期化して前面に表示
 % contour(rplot)はｘ対ｔのグラフなので、ｔ対ｘのグラフにrot90関数を用いる
 clevels = 0: (0.1) :1; %等値線のレベル
+cs = contour(xplot,tplot,flipud(rot90(rplot)),clevels);
 clabel(cs); % 等値線にラベルをつける
 xlabel('x'); ylabel('時刻'); title('密度の等値線') ;
