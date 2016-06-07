@@ -37,7 +37,7 @@ figure(1); clf; %画面を初期化して前面に表示
 %*所望の時間刻み数まで計算を繰り返す。
 for istep=1:nstep
     %*流れ＝（密度)*(速度）を計算
-    F1ow = rho .* (v_max*(1 - rho/rho_max));
+    Flow = rho .* (v_max*(1 - rho/rho_max));
     
     %*FTCS法、ラックス法、あるいはラックス・ベンドロフ法
     % で密度の新しい値を計算
@@ -72,10 +72,10 @@ mesh(tplot,xplot,rplot)
 xlabel('t'); ylabel('x'); zlabel('\rho');
 title('位置および時刻と密度の関係');
 view([100 30]) ;%図を見やすい角度に回転させる
-pause(1); % 1秒静止
+pause(10); % 1秒静止
 %*位置および時刻と密度の関係を等値線グラフ表示する。
 figure (2); clf; % 2番目の画面を初期化して前面に表示
 % contour(rplot)はｘ対ｔのグラフなので、ｔ対ｘのグラフにrot90関数を用いる
 clevels = 0: (0.1) :1; %等値線のレベル
-clabel(cs) ; % 等値線にラベルをつける
+clabel(cs); % 等値線にラベルをつける
 xlabel('x'); ylabel('時刻'); title('密度の等値線') ;
