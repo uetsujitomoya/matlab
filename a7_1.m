@@ -56,11 +56,11 @@ end
 %* 最初と最後の波形をグラフ表示する。
 figure(1); clf; % 1つめのウインドウを消去して前面に表示
 plot(x,aplot(:,1),'-',x,a,'--');
-legend('最初','最後');
+legend('first','final');
 pause(1); % 次のグラフ表示の前に１ 秒待つ
 
 %* 位置と時間に対する振幅の変化をグラフ表示する。
 figure(2); clf; % 2つめのウインドウを消去して前面に表示
 mesh(tplot,x,aplot);
-ylabel('位置'); xlabel('時刻'); zlabel('振幅');
+ylabel('x'); xlabel('t'); zlabel('a(x,t)');
 view([-70 50]); % 見やすいように角度を調整
