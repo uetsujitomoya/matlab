@@ -37,14 +37,14 @@ figure(1); clf; %画面を初期化して前面に表示
 %*所望の時間刻み数まで計算を繰り返す。
 for istep=1:nstep
     %*流れ＝（密度)*(速度）を計算
-    Flow = rho .* (v_max*(1 - rho/rho_max));
+    F1ow = rho .* (v_max*(1 - rho/rho_max));
     
     %*FTCS法、ラックス法、あるいはラックス・ベンドロフ法
     % で密度の新しい値を計算
     if( method == 1 )%%%FTCS%%%
-        rho(l:N) = rho(l:N) - coeff*(Flow(ip)-Flow(im));
-    elseif ( method == 2 ) %%%ラツクス法識＄
-        rho(l:N) = .5*(rho(ip)+rho(im)) ...
+        rho(1:N) = rho(1:N) - coeff*(Flow(ip)-Flow(im));
+    elseif( method == 2 ) %%%ラツクス法識＄
+        rho(1:N) = .5*(rho(ip)+rho(im)) ...
             - coeff*(Flow(ip)-Flow(im));
     else % % % ラックス・ベンドロフ法諸稚
         cp = v_max*(1 - (rho(ip)+rho(1:N))/rho_max) ;
